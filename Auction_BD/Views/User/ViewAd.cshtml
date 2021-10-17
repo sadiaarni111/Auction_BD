@@ -1,0 +1,147 @@
+﻿@model Auction_BD.Models.viewadmodel
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<style>
+    body {
+        background-color: aquamarine;
+    }
+
+    td {
+        padding: 20px;
+    }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body style="background-color:aquamarine">
+
+
+
+    <div class="row">
+
+
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <h1>
+                @Model.pro_name
+            </h1>
+            @if (Model.appv == 1)
+            {
+                <h1>Remaining Time: @Model.time.ToString(@"d\:hh\:mm")</h1>
+            }
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+            <img src="@Url.Content(@Model.pro_iamge)" style="width:400PX; height:400PX" />
+
+        </div>
+    </div>
+
+
+    @*<div>
+            <h1>@Model.pro_name </h1>
+        </div>
+        <div>
+            @if (Model.appv == 1)
+            {
+                <h1>Remaining Time: @Model.time.ToString(@"d\:hh\:mm")</h1>
+            }
+        </div>
+
+        <img src="@Url.Content(@Model.pro_iamge)" style="width:800PX; height:450PX" />
+        </div>*@
+
+<div class="row">
+
+
+
+
+
+    <div class="col-lg-6 col-md-8">
+
+        <div>
+            <h1 style="font-weight:bold">Description: </h1>
+
+            @if (Model.u_id != null)
+            {
+                <h4 style="color: #808080; font-size: 30px; font-family:'Arial Rounded MT'"> @Html.ActionLink(Model.bider_name, "Viewotherprofile", new { id = Model.u_id })</h4>
+            }
+            @*<p>@Model.pro_des</p>*@
+        </div>
+
+        <table>
+            <tbody style="font-size:30px; font-weight:400">
+                <b>
+                <tr> <td>Price: </td> <td>@Model.pro_price </td> </tr>
+                <tr> <td>Category: </td> <td>@Model.cat_name </td> </tr>
+                <tr> <td>Posted by: </td> <td>@Model.u_name <img src="@Url.Content(@Model.u_image)" style="width:40px; height:40px" /> </td> </tr>
+                <tr> <td>Details: </td> <td>@Model.pro_des </td> </tr>
+                <tr> <td>Last Bid: </td> <td>@Model.bid_price </td> </tr>
+                <tr> <td>Contact: </td> <td>@Model.u_phone  </td> </tr>
+                </b>
+            </tbody>
+
+
+
+
+
+
+        </table>
+
+
+
+    </div>
+
+
+    @using (Html.BeginForm("bid",
+"User", FormMethod.Post,
+new { enctype = "multipart/form-data" }))
+    {
+
+
+
+        if (Session["u_id"] != null)
+        {
+            if (Model.pro_fk_user != Convert.ToInt32(Session["u_id"]))
+            {
+                <div class="form-outline mb-4">
+
+
+
+                    <label class="form-label" for="form3Example3" style="margin-left:15px">BID PRICE</label>
+                    <span style="color:red">
+                        @Html.HiddenFor(model => model.pro_id)
+                        @Html.EditorFor(model => model.bid_price)
+                    </span>
+                </div>
+
+                <input type="submit" value="BID" class="btn btn-primary btn-lg" style="margin-left:10px" />
+
+                <p>@ViewBag.error</p>
+                <p>@TempData["ErrorMessage"]</p>
+            }
+        }
+
+
+
+    }
+
+
+
+
+    @*<div class="col-lg-2 col-md-2">
+            <img src="~/Content/img/150_sleep1_600.gif" class="img img-responsive" style=" height:500px;" />
+        </div>*@
+
+
+
+</div>
+    </body>

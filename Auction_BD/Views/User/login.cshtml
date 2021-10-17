@@ -1,0 +1,52 @@
+﻿@model Auction_BD.Models.user
+@{
+
+    ViewBag.Title = "login";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<style>
+</style>
+
+
+<h1> Login Form</h1>
+<div class="login">
+    <div class="ribbon-wrapper h2 ribbon-red">
+        <div class="ribbon-front">
+            <h2>Login</h2>
+        </div>
+        <div class="ribbon-edge-topleft2"></div>
+        <div class="ribbon-edge-bottomleft"></div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <ul>
+            <li>
+
+                @Html.TextBoxFor(x => x.u_email, new { @placeholder = "Email" })<a href="#" class=" icon user"></a>
+
+                <span style="color:red">
+                    @Html.ValidationMessageFor(x => x.u_email)
+                </span>
+            </li>
+            <li>
+                @Html.PasswordFor(x => x.u_password, new { @placeholder = "Password" })<a href="#" class=" icon lock"></a>
+                <span style="color:red">
+                    @Html.ValidationMessageFor(x => x.u_password)
+                </span>
+            </li>
+        </ul>
+
+
+        <div class="submit">
+            <input type="submit" onclick="myFunction()" value="Log in">
+        </div>
+    }
+</div>
+<!--start-copyright-->
+@*<div class="copy-right">*@
+@* <p>Copyright &copy; 2015  All rights  Reserved | Template by &nbsp;<a href="http://w3layouts.com">W3layouts</a></p>*@
+</div>
+<!--//end-copyright-->
+<div>
+   
+</div>

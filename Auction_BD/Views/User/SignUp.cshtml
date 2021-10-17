@@ -1,0 +1,74 @@
+﻿@model Auction_BD.Models.user
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+
+}
+
+
+
+<h1> Login Form</h1>
+<div class="login">
+    <div class="ribbon-wrapper h2 ribbon-red">
+        <div class="ribbon-front">
+            <h2>Login</h2>
+        </div>
+        <div class="ribbon-edge-topleft2"></div>
+        <div class="ribbon-edge-bottomleft"></div>
+    </div>
+    @using (Html.BeginForm("SignUp",
+            "User", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+    {
+<ul>
+    <li>
+
+        @Html.TextBoxFor(x => x.u_name, new { @class = "form-control", @placeholder = "Name" })
+
+        <span style="color:red">
+            @Html.ValidationMessageFor(x => x.u_name)
+        </span>
+    </li>
+    <li>
+        @Html.TextBoxFor(x => x.u_email, new { @class = "form-control", @placeholder = "Email" })<a href="#" class=" icon lock"></a>
+        <span style="color:red">
+            @Html.ValidationMessageFor(x => x.u_email)
+        </span>
+    </li>
+    <li>
+        @Html.TextBoxFor(x => x.u_phone, new { @class = "form-control", @placeholder = "Phone" })<a href="#" class=" icon lock"></a>
+        <span style="color:red">
+            @Html.ValidationMessageFor(x => x.u_phone)
+        </span>
+    </li>
+    <li>
+        @Html.PasswordFor(x => x.u_password, new { @class = "form-control", @placeholder = "Password" })<a href="#" class=" icon lock"></a>
+        <span style="color:red">
+            @Html.ValidationMessageFor(x => x.u_password)
+        </span>
+    </li>
+
+    <li>
+        <p class="contact"><label for="name">Image</label></p>
+        <input type="file" name="imgfile" id="imgfile" class="form-control" required="required" />
+    </li>
+
+
+
+
+</ul>
+
+
+        <div class="submit">
+            <input type="submit" onclick="myFunction()" value="Log in">
+        </div>
+    }
+</div>
+<!--start-copyright-->
+@*<div class="copy-right">*@
+@* <p>Copyright &copy; 2015  All rights  Reserved | Template by &nbsp;<a href="http://w3layouts.com">W3layouts</a></p>*@
+</div>
+<!--//end-copyright-->
+<div>
+
+</div>

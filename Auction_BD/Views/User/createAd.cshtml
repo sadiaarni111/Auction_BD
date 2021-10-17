@@ -1,0 +1,142 @@
+﻿@model Auction_BD.Models.product
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+@*<h2>ADD NEW category </h2>*@
+
+@*<style>
+        #box {
+            border: 1px solid black;
+            height: 100%;
+        }
+
+        #main-div {
+            height: 900px;
+            background-image: url('../../Content/img/building6.jpg');
+            background-size: 100% 900px;
+        }
+
+        .insidebox {
+            border: 1px solid black;
+            margin: 10% auto 10% auto;
+            max-width: 500px;
+            min-width: 200px;
+            padding-left: 60px;
+            padding-right: 60px;
+            border-radius: 10px;
+            background-color: whitesmoke;
+        }
+
+        div h1 {
+            text-align: center;
+        }
+
+        p#para {
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <div id="main-div">
+        <div id="box" class="img-responsive">*@
+<!--/start-login-one-->
+<h1>Add Post</h1>
+<div class="login">
+    <div class="ribbon-wrapper h2 ribbon-red">
+        <div class="ribbon-front">
+            <h2>Post An Ad</h2>
+        </div>
+        <div class="ribbon-edge-topleft2"></div>
+        <div class="ribbon-edge-bottomleft"></div>
+    </div>
+    @using (Html.BeginForm("createAd",
+            "User", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+    {
+        @*<div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                @Html.DropDownListFor(x => x.pro_fk_cat, ViewBag.cetagories as SelectList, "--select cetagory--", new { @class = "form-control" })
+
+            </div>
+            <span style="color:red">   @Html.ValidationMessageFor(x => x.pro_fk_cat) </span>
+
+        </div>*@
+
+
+        <ul>
+            <li>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        @Html.DropDownListFor(x => x.pro_fk_cat, ViewBag.cetagories as SelectList, "--select cetagory--", new { @class = "form-control" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.pro_fk_cat) </span>
+
+                </div>
+                @*@Html.DropDownListFor(x => x.pro_fk_cat, ViewBag.cetagories as SelectList, "--select cetagory--", new { @class = "form-control" })
+        <span style="color:red">   @Html.ValidationMessageFor(x => x.pro_fk_cat) </span>*@
+            </li>
+            <li>
+
+                @Html.TextBoxFor(x => x.pro_name, new { @placeholder = "Product Name" })<a href="#" class=" icon user"></a>
+
+                <span style="color:red">
+                    @Html.ValidationMessageFor(x => x.pro_name)
+                </span>
+            </li>
+            <li>
+                @Html.TextBoxFor(x => x.pro_price, new { @placeholder = "Price" })<a href="#" class=" icon lock"></a>
+                <span style="color:red">
+                    @Html.ValidationMessageFor(x => x.pro_price)
+                </span>
+            </li>
+            <li>
+                @Html.TextBoxFor(x => x.pro_des, new { @placeholder = "Description" }) <a href="#" class=" icon lock"></a>
+                <span style="color:red">
+                    @Html.ValidationMessageFor(x => x.pro_des)
+                </span>
+            </li>
+
+            <li>
+                <p class="contact"><label for="name">Image</label></p>
+                <input type="file" name="imgfile" id="imgfile" class="form-control" required="required" />
+            </li>
+
+            @*<div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+
+                    <p class="contact"><label for="name">Image</label></p>
+                    <input type="file" name="imgfile" id="imgfile" class="form-control" required="required" />
+
+
+                </div>*@
+
+        </ul>
+
+
+        <div class="submit">
+            <input type="submit" value="POST ADDS">
+        </div>
+    }
+</div>
+<!--start-copyright-->
+@*<div class="copy-right">*@
+@* <p>Copyright &copy; 2015  All rights  Reserved | Template by &nbsp;<a href="http://w3layouts.com">W3layouts</a></p>*@
+</div>
+<!--//end-copyright-->
+@*<div>
+    @Html.ActionLink("Create Account", "Create")
+</div>*@

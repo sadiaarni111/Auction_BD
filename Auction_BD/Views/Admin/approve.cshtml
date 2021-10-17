@@ -1,0 +1,82 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Auction_BD.Models.product>
+@{
+    ViewBag.Title = "ViewCategory";
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+<style>
+    .pad{
+        padding:15px;
+        width: 90px;
+        height: 40px;
+        font-weight:bold;
+    }
+</style>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="height:1150px; ">
+        <div class="row">
+               <div><h1  style="text-align:center"><b>Admin Approval</b></h1></div>
+
+        </div>
+
+
+
+        <div class="row" style="margin-bottom:40px">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+            <div class="col-lg-4 col-md-4" style="height:200px;margin-top:100px">
+                <img src="@Url.Content(item.pro_iamge)" style=" height:100%;width:100% ;border-radius:50px 50px 50px 50px" />
+                @*  <h4 style="color:#808080; font-family:'Arial Rounded MT';text-align:center">@item.pro_name</h4> *@
+                <h2 style="color:#f6ae2d; font-family:'Arial Rounded MT';text-align:center"> @Html.ActionLink(@item.pro_name, "ViewAd", new { id = @item.pro_id })</h2>
+
+
+                <div style="margin-left:144px; padding:15px 15px">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.pro_id }, new { @class = "btn btn-danger btn-sm pad" })
+
+                </div>
+                <div style="margin-left:160px">
+                    @Html.ActionLink("Approve", "appv", new { id = item.pro_id }, new { @class = "btn btn-success btn-sm pad" })
+
+                </div>
+            </div>
+
+                }
+            }
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("ViewCategory", new { page }))
+        </div>
+    </div>
+</body>
+</html>

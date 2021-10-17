@@ -1,0 +1,68 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .na {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse" style="">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">AUCTION BD</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Category", "ViewCategory", "Admin", null, new { @class = "ht" })</li>
+                <li>
+                    @if (Session["ad_id"] != null)
+                    {
+                        @Html.ActionLink("Create a Cetagory", "Create", "Admin", null, new { @class = "ht" })
+
+                        @Html.ActionLink("Pending Post", "approve", "Admin", null, new { @class = "ht" })
+
+
+
+                    }
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @if (Session["u_id"] == null)
+                    {
+
+                        @Html.ActionLink("Sign In", "login", "Admin", null, new { @class = "ht", })
+
+                    }
+                </li>
+
+            </ul>
+        </div>
+
+
+
+    </nav>
+
+    @RenderBody()
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <div class="container body-content">
+      
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿@model Auction_BD.Models.Profileviewmodel
+
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<style>
+    td {
+        padding: 20px;
+    }
+</style>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body style="background-color:aquamarine">
+
+    <div class="row">
+
+
+
+        @*<div>
+                <h1><b></b>@Model.u_name </h1>
+            </div>*@
+
+
+
+        <div class="col-lg-8 col-md-8 col-sm-8" style="height:200px;margin-top:100px">
+            <h1><b style="color: #0B415A">Description:</b></h1>
+            <h2><b>@Model.u_name</b> </h2>
+            <h3>
+                <p style="font-size:30px"> @Model.u_email</p>
+            </h3>
+            <h3>
+                <p style="font-size:30px">@Model.u_phone</p>
+            </h3>
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4" style="height:200px;margin-top:100px">
+
+            <img src="@Url.Content(@Model.u_image)" style=" height:100%;width:80% ;border-radius:50px 50px 50px 50px" />
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-left:110px">
+
+        <div class="col-lg-8 col-md-8">
+
+            <h1 style=" margin-top:150px"><b>Posted Ads</b></h1>
+
+            <div class="container">
+
+                <div class="row" style="margin-bottom:40px">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model.pro_list)
+                        {
+                            <div class="col-lg-5 col-md-5" style="height:200px;margin-top:100px">
+                                <img src="@Url.Content(item.pro_iamge)" style=" height:100%;width:100% ;border-radius:50px 50px 50px 50px" />
+                                <h4 style="color:#808080; font-family:'Arial Rounded MT';text-align:center"> @Html.ActionLink(@item.pro_name, "ViewAd", new { id = @item.pro_id })</h4>
+
+
+                            </div>
+
+                        }
+                    }
+
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+         
+ 
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>
